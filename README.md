@@ -2,8 +2,6 @@
 
 Upload a photo of your fridge → AI identifies ingredients → finds recipes → shows what to buy.
 
-![Flow: upload photo → ingredients → recipes](https://placehold.co/800x200?text=Upload+→+Ingredients+→+Recipes)
-
 ## Tech Stack
 
 | Layer | Tool |
@@ -12,68 +10,6 @@ Upload a photo of your fridge → AI identifies ingredients → finds recipes �
 | Backend | FastAPI (Python) |
 | Vision AI | LLaVA 7B via Ollama (runs locally) |
 | Recipes | Spoonacular API |
-
-## Prerequisites
-
-- Python 3.11+
-- Node.js 18+
-- [Ollama](https://ollama.com) installed
-- A [Spoonacular API key](https://spoonacular.com/food-api) (free tier works)
-
-## Setup
-
-### 1. Pull the vision model
-
-```bash
-ollama pull llava:7b
-```
-
-This is a one-time ~4GB download.
-
-### 2. Backend
-
-```bash
-cd backend
-python -m venv .venv
-source .venv/bin/activate       # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-Copy the env file and add your Spoonacular key:
-
-```bash
-cp .env.example .env
-```
-
-Edit `backend/.env`:
-
-```
-SPOONACULAR_API_KEY=your_key_here
-```
-
-### 3. Frontend
-
-```bash
-cd frontend
-npm install
-```
-
-## Running
-
-You need three terminals:
-
-```bash
-# Terminal 1 — Ollama (vision model server)
-ollama serve
-
-# Terminal 2 — Backend
-cd backend && source .venv/bin/activate && uvicorn main:app --reload
-
-# Terminal 3 — Frontend
-cd frontend && npm run dev
-```
-
-Open **http://localhost:5173** in your browser.
 
 ## How It Works
 
@@ -98,7 +34,6 @@ fridge-chef/
 ├── backend/
 │   ├── main.py              # FastAPI app
 │   ├── requirements.txt
-│   └── .env.example
 └── frontend/
     ├── src/
     │   ├── App.jsx          # Single-page React app
